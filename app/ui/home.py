@@ -426,7 +426,8 @@ def handle_form_submission(
                 function is defined in auth/api.py and is called here. 
                 New format def webhook_notification(event_type, username=None, full_name=None, email=None, intro=None, invited_by=None, password=None):
                 """
-                webhook_notification("user_created", new_username, full_name, email, intro, invited_by, temp_password)
+                if Config.WEBHOOK_ENABLED and Config.INDIVIDUAL_WEBHOOKS.get("user_created", False):
+                    webhook_notification("user_created", new_username, full_name, email, intro, invited_by, temp_password)
             else:
                 st.error("Failed to create user. Please verify inputs and try again.")
         elif operation == "Reset User Password":

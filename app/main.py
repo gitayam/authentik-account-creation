@@ -5,11 +5,9 @@ from ui.home import render_home_page
 from ui.summary import main as render_summary_page
 from ui.help_resources import main as render_help_page
 from ui.prompts import main as render_prompts_page
+from ui.user_settings import display_settings as render_user_settings_page
 from utils.helpers import setup_logging
 import logging
-
-# Initialize logging
-setup_logging()
 
 # Set page config early
 st.set_page_config(
@@ -18,12 +16,15 @@ st.set_page_config(
     layout="wide"
 )
 
+# Initialize logging
+setup_logging()
+
 def main():
     try:
         # Add a selectbox for navigation
         page = st.sidebar.selectbox(
             "Select Page",
-            ["Home", "Summary", "Help", "Prompts"]
+            ["Home", "Summary", "Help", "Prompts", "User Settings"]
         )
 
         # Render the selected page
@@ -35,6 +36,8 @@ def main():
             render_help_page()
         elif page == "Prompts":
             render_prompts_page()
+        elif page == "User Settings":
+            render_user_settings_page()
     except Exception as e:
         st.error(f"An unexpected error occurred: {e}")
         logging.error(f"Unexpected error in main: {e}")

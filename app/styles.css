@@ -1,7 +1,15 @@
 /* styles.css */
-body {
-    font-family: 'Roboto', sans-serif;
-    color: #2c3e50;
+
+/* Light Theme */
+body.light-theme {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background-color: #0E1117;
+    color: #FAFAFA;
 }
 
 .stButton>button {

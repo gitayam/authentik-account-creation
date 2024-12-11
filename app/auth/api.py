@@ -36,10 +36,8 @@ def webhook_notification(event_type, username=None, full_name=None, email=None, 
     webhook_notification(event_type, username, full_name, None, None, invited_by, None)
     """
     WEBHOOK_URL = Config.WEBHOOK_URL
-    WEBHOOK_SECRET = Config.WEBHOOK_SECRET
     headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {WEBHOOK_SECRET}"  # Added testing authentication header
+        "Content-Type": "application/json"
     }
     data = {
         "event": event_type,
